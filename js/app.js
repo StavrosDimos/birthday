@@ -18,12 +18,13 @@
   const DEFAULT_CONFIG = {
     ramFundPercentage: 25,
     googleFormUrl: 'https://forms.google.com',
+    introPhotoUrl: '',
     ramImageUrl: 'ram.png',
     milestones: [
-      { percent: 25, label: '25%' },
-      { percent: 50, label: '50%' },
-      { percent: 75, label: '75%' },
-      { percent: 100, label: '100% (Kingston FURY)' }
+      { percent: 25, label: '<MILESTONE 1 LABEL>' },
+      { percent: 50, label: '<MILESTONE 2 LABEL>' },
+      { percent: 75, label: '<MILESTONE 3 LABEL>' },
+      { percent: 100, label: '<MILESTONE 4 LABEL>' }
     ],
     contributors: []
   };
@@ -62,7 +63,7 @@
         x: originX !== undefined ? originX : 0.5,
         y: originY !== undefined ? originY : 0.6
       },
-      colors: ['#6366f1', '#ec4899', '#06b6d4', '#f59e0b', '#8b5cf6']
+      colors: ['#f472b6', '#f59e0b', '#60a5fa', '#34d399', '#fb7185', '#a78bfa', '#fbbf24']
     });
   }
 
@@ -179,7 +180,7 @@
       }, stepTime);
 
       if (statusText) {
-        statusText.textContent = `RAM Fund: ${targetPercent}% of Goal Reached`;
+        statusText.textContent = `RAM Status: ${targetPercent}%`;
       }
     }, 250);
   }
@@ -195,7 +196,7 @@
     const contributors = Array.isArray(config.contributors) ? config.contributors : [];
 
     if (countEl) {
-      countEl.textContent = `${contributors.length} ${contributors.length === 1 ? 'Supporter' : 'Supporters'}`;
+      countEl.textContent = `${contributors.length} <SUPPORTERS COUNT LABEL>`;
     }
 
     if (!tbody) return;
@@ -205,11 +206,11 @@
       tbody.innerHTML = contributors.map((c, i) => `
         <tr>
           <td style="color: var(--text-dim); font-family: 'Space Grotesk', monospace;">#${i + 1}</td>
-          <td style="font-weight: 600; color: #fff;">${escapeHtml(c.name || 'Friend')}</td>
-          <td style="color: var(--text-muted);">${escapeHtml(c.persona || 'Inner Child')}</td>
+          <td style="font-weight: 700; color: var(--text-main);">${escapeHtml(c.name || '<FRIEND NAME>')}</td>
+          <td style="color: var(--text-muted);">${escapeHtml(c.persona || '<CHILDHOOD PERSONA>')}</td>
           <td style="text-align: right;">
-            <span style="display: inline-block; padding: 3px 10px; border-radius: 999px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; font-size: 0.78rem; font-weight: 600;">
-              ${escapeHtml(c.status || 'Backed')}
+            <span style="display: inline-block; padding: 4px 12px; border-radius: 999px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); color: #059669; font-size: 0.78rem; font-weight: 700;">
+              ${escapeHtml(c.status || '<STATUS LABEL>')}
             </span>
           </td>
         </tr>

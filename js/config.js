@@ -15,22 +15,25 @@ const BIRTHDAY_CONFIG = {
   // Paste your published Google Form link here:
   googleFormUrl: "https://forms.google.com",
 
-  // 3. RAM Stick Image Path
-  // Path to your RAM stick image file (cropped Kingston FURY BEAST image):
+  // 3. Intro Photo Path (Path to photo file, e.g. "images/last-year.jpg". Leave empty for placeholder)
+  introPhotoUrl: "",
+
+  // 4. RAM Image Path
+  // Path to your mascot image file:
   ramImageUrl: "ram.png",
 
-  // 4. Milestone Markers displayed under the RAM stick
+  // 4. Milestone Markers displayed under the RAM mascot
   milestones: [
-    { percent: 25, label: "25%" },
-    { percent: 50, label: "50%" },
-    { percent: 75, label: "75%" },
-    { percent: 100, label: "100% (Kingston FURY)" }
+    { percent: 25, label: "<MILESTONE 1 LABEL>" },
+    { percent: 50, label: "<MILESTONE 2 LABEL>" },
+    { percent: 75, label: "<MILESTONE 3 LABEL>" },
+    { percent: 100, label: "<MILESTONE 4 LABEL>" }
   ],
 
   // 5. Contributor List
   // Add contributors as friends chip in.
   // Example entry:
-  //   { name: "Alex M.", persona: "1997 Dinosaur Pajamas", status: "Backed" },
+  //   { name: "<FRIEND NAME>", persona: "<CHILDHOOD PERSONA>", status: "<STATUS LABEL>" },
   contributors: [
     // Currently empty as requested!
   ]

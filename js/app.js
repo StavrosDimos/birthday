@@ -6,7 +6,6 @@
  * - Google Form CTA binding
  * - Responsive RAM stick dimension synchronization
  * - Animated unmasking progress fill
- * - Milestone status updates
  * - Dynamic Contributor Table rendering with XSS safety
  * - Interactive celebratory confetti triggers
  */
@@ -19,13 +18,7 @@
     ramFundPercentage: 25,
     googleFormUrl: 'https://forms.google.com',
     introPhotoUrl: '',
-    ramImageUrl: 'ram.png',
-    milestones: [
-      { percent: 25, label: '<MILESTONE 1 LABEL>' },
-      { percent: 50, label: '<MILESTONE 2 LABEL>' },
-      { percent: 75, label: '<MILESTONE 3 LABEL>' },
-      { percent: 100, label: '<MILESTONE 4 LABEL>' }
-    ],
+    ramImageUrl: 'resources/ram.png',
     contributors: []
   };
 
@@ -72,11 +65,17 @@
    */
   function setupFormLink(config) {
     const linkEl = document.getElementById('google-form-link');
-    if (linkEl && config.googleFormUrl) {
+    if (!linkEl) return;
+
+    const existingHref = linkEl.getAttribute('href');
+    if (config.googleFormUrl && config.googleFormUrl !== 'https://forms.google.com') {
       linkEl.href = config.googleFormUrl;
-      linkEl.setAttribute('target', '_blank');
-      linkEl.setAttribute('rel', 'noopener noreferrer');
+    } else if ((!existingHref || existingHref === '#') && config.googleFormUrl) {
+      linkEl.href = config.googleFormUrl;
     }
+
+    linkEl.setAttribute('target', '_blank');
+    linkEl.setAttribute('rel', 'noopener noreferrer');
   }
 
   /**
@@ -97,22 +96,6 @@
   }
 
   /**
-   * Render milestone badges dynamically from config
-   */
-  function renderMilestones(config) {
-    const container = document.getElementById('milestone-container');
-    if (!container) return;
-
-    const milestones = Array.isArray(config.milestones) ? config.milestones : DEFAULT_CONFIG.milestones;
-    const currentPercent = Number(config.ramFundPercentage) || 0;
-
-    container.innerHTML = milestones.map(m => {
-      const isActive = currentPercent >= m.percent;
-      return `<span class="milestone-pill ${isActive ? 'active' : ''}" data-percent="${m.percent}">${escapeHtml(m.label)}</span>`;
-    }).join('');
-  }
-
-  /**
    * Keep unmasked visual layer matched to the outer frame width
    */
   function setupDimensionSync() {
@@ -120,7 +103,7 @@
     const visualContent = document.getElementById('ram-visual-content');
     const fillImg = document.getElementById('ram-custom-image');
 
-    if (!frameEl || !visualContent) return () => {};
+    if (!frameEl || !visualContent) return () => { };
 
     function sync() {
       const width = frameEl.offsetWidth;
@@ -152,7 +135,6 @@
   function animateProgressBar(config, syncFn) {
     const fillLayer = document.getElementById('ram-fill-layer');
     const percentageNumber = document.getElementById('percentage-number');
-    const statusText = document.getElementById('ram-status-text');
 
     if (!fillLayer || !percentageNumber) return;
 
@@ -178,10 +160,6 @@
         }
         percentageNumber.textContent = `${Math.round(currentVal)}%`;
       }, stepTime);
-
-      if (statusText) {
-        statusText.textContent = `RAM Status: ${targetPercent}%`;
-      }
     }, 250);
   }
 
@@ -246,7 +224,6 @@
 
     setupFormLink(config);
     setupRamImages(config);
-    renderMilestones(config);
     const syncFn = setupDimensionSync();
     animateProgressBar(config, syncFn);
     renderContributors(config);

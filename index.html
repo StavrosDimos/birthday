@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stav's Birthday! - Another year older, still a child.</title>
-  <meta name="description" content="Another year older, still a child." />
+  <title>Stav's Birthday!</title>
+  <meta name="description" content="Stav's Birthday!" />
 
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
     rel="stylesheet" />
 
   <!-- External Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=5" />
+  <link rel="stylesheet" href="css/styles.css?v=8" />
 
   <!-- Canvas Confetti Library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -55,27 +55,88 @@
               <span class="info-icon">📍</span>
               <strong>Where:</strong>
             </div>
-            <div class="info-value">&lt;LOCATION&gt;</div>
+            <div class="info-value">My parents' house in Isaacs (message me if you don't know)</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">
+              <span class="info-icon">👶</span>
+              <strong>What to wear:</strong>
+            </div>
+            <div class="info-value">
+              <p>
+                Find an iconic photo of yourself as a child and recreate the outfit.
+              </p>
+            </div>
           </div>
 
           <div class="info-row">
             <div class="info-label">
               <span class="info-icon">🧸</span>
-              <strong>Theme:</strong>
+              <strong>What to bring:</strong>
             </div>
-            <div class="info-value">&lt;THEME DETAILS&gt;</div>
+            <div class="info-value">
+              <p>
+                Your favourite childhood snack and/or anything you'd like to drink.
+              </p>
+            </div>
           </div>
+
         </div>
 
-        <!-- Submit Button (Directs to Google Form) -->
+        <!-- Submit Button (Directs to Google Form) with playful pointer arrows -->
         <div class="cta-wrapper">
-          <a id="google-form-link" href="#" class="cta-button">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-            </svg>
-            <span>&lt;SUBMIT BUTTON (DIRECTS TO GOOGLE FORM)&gt;</span>
-          </a>
+          <div class="cta-target-group">
+            <!-- Top-Left Hint: "submit your photo" -->
+            <div class="cta-hint cta-hint-top-left" aria-hidden="true">
+              <span class="cta-hint-text">submit your photo</span>
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M4 10 C 18 10, 32 16, 40 34" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M28 32 L 40 35 L 42 22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <!-- Top-Right Hint: "click this" -->
+            <div class="cta-hint cta-hint-top-right" aria-hidden="true">
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M44 10 C 30 10, 16 16, 8 34" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M6 22 L 8 35 L 20 32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="cta-hint-text">click this</span>
+            </div>
+
+            <a id="google-form-link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSedtJd1sB7jvB6HA25iG7m_sgcpgEPefhrl6ujeN9YaYTI8vA/viewform?usp=dialog"
+              class="cta-button">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+              </svg>
+              <span>RSVP</span>
+            </a>
+
+            <!-- Bottom-Left Hint: "stop procrastinating" -->
+            <div class="cta-hint cta-hint-bottom-left" aria-hidden="true">
+              <span class="cta-hint-text">stop procrastinating</span>
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M6 34 C 18 32, 32 24, 40 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M28 10 L 40 7 L 38 20" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <!-- Bottom-Right Hint: "do ittt" -->
+            <div class="cta-hint cta-hint-bottom-right" aria-hidden="true">
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M42 34 C 30 32, 16 24, 8 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M10 20 L 8 7 L 20 10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="cta-hint-text">do ittt</span>
+            </div>
+          </div>
         </div>
       </section>
     </header>
@@ -87,37 +148,34 @@
           <h2 class="section-title">
             <span>✨ Inspiration</span>
           </h2>
-          <p class="section-subtitle">
-            Need costume ideas? Recreate a classic photo from when you were little!
-          </p>
         </div>
       </div>
 
       <div class="inspiration-grid">
         <div class="inspiration-card">
           <div class="inspiration-img-wrap">
-            <img class="inspiration-img" src="Recreated1.png" alt="Inspiration idea 1 - Childhood recreation"
+            <img class="inspiration-img" src="resources/Recreated1.png" alt="Inspiration idea 1 - Childhood recreation"
               loading="lazy" />
           </div>
         </div>
 
         <div class="inspiration-card">
           <div class="inspiration-img-wrap">
-            <img class="inspiration-img" src="Recreated2.png" alt="Inspiration idea 2 - Childhood recreation"
+            <img class="inspiration-img" src="resources/Recreated2.png" alt="Inspiration idea 2 - Childhood recreation"
               loading="lazy" />
           </div>
         </div>
 
         <div class="inspiration-card">
           <div class="inspiration-img-wrap">
-            <img class="inspiration-img" src="Recreated3.png" alt="Inspiration idea 3 - Childhood recreation"
+            <img class="inspiration-img" src="resources/Recreated3.png" alt="Inspiration idea 3 - Childhood recreation"
               loading="lazy" />
           </div>
         </div>
 
         <div class="inspiration-card">
           <div class="inspiration-img-wrap">
-            <img class="inspiration-img" src="Recreated4.png" alt="Inspiration idea 4 - Childhood recreation"
+            <img class="inspiration-img" src="resources/Recreated4.png" alt="Inspiration idea 4 - Childhood recreation"
               loading="lazy" />
           </div>
         </div>
@@ -129,10 +187,14 @@
       <div class="section-header">
         <div>
           <h2 class="section-title">
-            <span>🐑 &lt;RAM FUND SECTION TITLE&gt;</span>
+            <span>🐑 Stav's RAM Fund</span>
           </h2>
           <p class="section-subtitle">
-            &lt;SENTENCE DESCRIPTION OF RAM GOAL&gt;
+            If you're feeling generous, instead of a gift, I would love a contribution to my ram fund <br>
+            (payid: stavros.dimos.0@gmail.com).
+          </p>
+          <p class="section-subtitle">
+            Am i buying computer parts? Am i buying a sheep? Contribute to find out.
           </p>
         </div>
         <div class="percentage-badge" id="percentage-badge" title="Click for confetti celebration!">
@@ -146,13 +208,14 @@
 
           <!-- Base Layer: Soft coloring-book pencil sketch outline -->
           <div class="ram-base-sketch">
-            <img class="ram-base-img" src="ram.png" alt="&lt;RAM MASCOT IMAGE ALT TEXT&gt;" />
+            <img class="ram-base-img" src="resources/ram.png" alt="&lt;RAM MASCOT IMAGE ALT TEXT&gt;" />
           </div>
 
           <!-- Fill Layer: Unmasks the vibrant full-color fluffy ram up to current % -->
           <div class="ram-fill-layer" id="ram-fill-layer">
             <div class="ram-visual-content" id="ram-visual-content">
-              <img id="ram-custom-image" class="ram-fill-img" src="ram.png" alt="&lt;RAM MASCOT IMAGE ALT TEXT&gt;" />
+              <img id="ram-custom-image" class="ram-fill-img" src="resources/ram.png"
+                alt="&lt;RAM MASCOT IMAGE ALT TEXT&gt;" />
               <!-- Shimmer edge indicating current progress -->
               <div class="ram-sparkle-edge"></div>
             </div>
@@ -160,21 +223,8 @@
 
         </div>
 
-        <!-- RAM Milestone Metadata -->
-        <div class="ram-meta-bar">
-          <span id="ram-status-text">RAM Status: 25%</span>
-          <div class="milestone-tags" id="milestone-container">
-            <!-- Rendered dynamically from js/config.js -->
-          </div>
-        </div>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>&lt;FOOTER TEXT&gt;</p>
-    </footer>
-
   </div>
 </body>
 

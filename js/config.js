@@ -9,26 +9,18 @@
 const BIRTHDAY_CONFIG = {
   // 1. RAM Fund Percentage (Set manually, currently 25%)
   // Values: 0 to 100
-  ramFundPercentage: 25,
+  ramFundPercentage: 5,
 
   // 2. Google Form URL for Photo & Name Submissions
   // Paste your published Google Form link here:
-  googleFormUrl: "https://forms.google.com",
+  googleFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSedtJd1sB7jvB6HA25iG7m_sgcpgEPefhrl6ujeN9YaYTI8vA/viewform?usp=dialog",
 
   // 3. Intro Photo Path (Path to photo file, e.g. "images/last-year.jpg". Leave empty for placeholder)
   introPhotoUrl: "",
 
   // 4. RAM Image Path
   // Path to your mascot image file:
-  ramImageUrl: "ram.png",
-
-  // 4. Milestone Markers displayed under the RAM mascot
-  milestones: [
-    { percent: 25, label: "<MILESTONE 1 LABEL>" },
-    { percent: 50, label: "<MILESTONE 2 LABEL>" },
-    { percent: 75, label: "<MILESTONE 3 LABEL>" },
-    { percent: 100, label: "<MILESTONE 4 LABEL>" }
-  ],
+  ramImageUrl: "resources/ram.png",
 
   // 5. Contributor List
   // Add contributors as friends chip in.

@@ -1,296 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World | GitHub Pages</title>
-  <meta name="description" content="A modern, beautifully designed Hello World starter site hosted on GitHub Pages." />
+  <title>Stav's Birthday!</title>
+  <meta name="description" content="Stav's Birthday!" />
+
+  <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg-dark: #090a0f;
-      --card-bg: rgba(255, 255, 255, 0.04);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --card-border-hover: rgba(139, 92, 246, 0.4);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent-1: #6366f1;
-      --accent-2: #a855f7;
-      --accent-3: #ec4899;
-    }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css?v=8" />
 
-    body {
-      min-height: 100vh;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Outfit', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-    /* Ambient background glowing orbs */
-    .glow-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.45;
-      pointer-events: none;
-      animation: float 14s ease-in-out infinite alternate;
-    }
-
-    .glow-orb-1 {
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, var(--accent-1), transparent 70%);
-      top: 15%;
-      left: 20%;
-    }
-
-    .glow-orb-2 {
-      width: 480px;
-      height: 480px;
-      background: radial-gradient(circle, var(--accent-2), transparent 70%);
-      bottom: 10%;
-      right: 18%;
-      animation-duration: 18s;
-      animation-delay: -4s;
-    }
-
-    .glow-orb-3 {
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, var(--accent-3), transparent 70%);
-      top: 50%;
-      right: 35%;
-      animation-duration: 12s;
-      animation-delay: -7s;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translate(0, 0) scale(1);
-      }
-      50% {
-        transform: translate(30px, -40px) scale(1.08);
-      }
-      100% {
-        transform: translate(-25px, 35px) scale(0.95);
-      }
-    }
-
-    /* Subtle grid pattern overlay */
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-      -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-    }
-
-    /* Container */
-    .container {
-      position: relative;
-      z-index: 10;
-      width: 90%;
-      max-width: 580px;
-      padding: 48px 40px;
-      background: var(--card-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid var(--card-border);
-      border-radius: 28px;
-      box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-      text-align: center;
-      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-    }
-
-    .container:hover {
-      border-color: var(--card-border-hover);
-      transform: translateY(-4px);
-      box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.6),
-        0 0 35px rgba(168, 85, 247, 0.15);
-    }
-
-    /* Badge */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      letter-spacing: 0.03em;
-    }
-
-    .status-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #22c55e;
-      box-shadow: 0 0 10px #22c55e;
-      position: relative;
-    }
-
-    .status-indicator::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background-color: #22c55e;
-      opacity: 0.4;
-      animation: pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0.9);
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(2.2);
-        opacity: 0;
-      }
-    }
-
-    /* Main Title */
-    h1 {
-      font-size: clamp(2.75rem, 7vw, 4.25rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, #ffffff 20%, #cbd5e1 60%, #a855f7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Subtitle */
-    p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      line-height: 1.6;
-      font-weight: 300;
-      margin-bottom: 32px;
-    }
-
-    /* Interactive button / tag */
-    .cta-container {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      padding: 10px 20px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.9rem;
-      color: #e2e8f0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.25s ease;
-      cursor: default;
-      user-select: none;
-    }
-
-    .tag:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .tag svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-      opacity: 0.8;
-    }
-
-    /* Subtle footer info */
-    .footer-note {
-      margin-top: 36px;
-      font-size: 0.8rem;
-      color: rgba(148, 163, 184, 0.6);
-      letter-spacing: 0.02em;
-    }
-  </style>
+  <!-- Site Configuration & Application Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js" defer></script>
 </head>
+
 <body>
-  <div class="glow-orb glow-orb-1"></div>
-  <div class="glow-orb glow-orb-2"></div>
-  <div class="glow-orb glow-orb-3"></div>
-  <div class="grid-overlay"></div>
+  <!-- Ambient background warmth and floating cloud orbs -->
+  <div class="glow-sphere glow-sphere-1"></div>
+  <div class="glow-sphere glow-sphere-2"></div>
+  <div class="glow-sphere glow-sphere-3"></div>
+  <div class="soft-dot-pattern"></div>
 
-  <main class="container" id="main-card">
-    <div class="status-badge">
-      <span class="status-indicator"></span>
-      GitHub Pages Ready
-    </div>
-    
-    <h1 id="headline">Hello World</h1>
-    
-    <p>
-      Your GitHub Pages website is live and ready for customization.
-    </p>
+  <div class="wrapper">
 
-    <div class="cta-container">
-      <div class="tag">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-        Static HTML
+    <!-- Hero / Top Section -->
+    <header class="hero">
+      <h1 class="hero-title">Stav's Birthday!</h1>
+      <p class="hero-spiel">Another year older, still a child.</p>
+
+      <!-- Event Details Card -->
+      <section class="event-details-card">
+        <div class="event-info-list">
+          <div class="info-row">
+            <div class="info-label">
+              <span class="info-icon">📅</span>
+              <strong>When:</strong>
+            </div>
+            <div class="info-value">21st November</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">
+              <span class="info-icon">📍</span>
+              <strong>Where:</strong>
+            </div>
+            <div class="info-value">My parents' house in Isaacs (message me if you don't know)</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">
+              <span class="info-icon">👶</span>
+              <strong>What to wear:</strong>
+            </div>
+            <div class="info-value">
+              <p>
+                Find an iconic photo of yourself as a child and recreate the outfit.
+              </p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">
+              <span class="info-icon">🧸</span>
+              <strong>What to bring:</strong>
+            </div>
+            <div class="info-value">
+              <p>
+                Your favourite childhood snack and/or anything you'd like to drink.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Submit Button (Directs to Google Form) with playful pointer arrows -->
+        <div class="cta-wrapper">
+          <div class="cta-target-group">
+            <!-- Top-Left Hint: "submit your photo" -->
+            <div class="cta-hint cta-hint-top-left" aria-hidden="true">
+              <span class="cta-hint-text">submit your photo</span>
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M4 10 C 18 10, 32 16, 40 34" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M28 32 L 40 35 L 42 22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <!-- Top-Right Hint: "click this" -->
+            <div class="cta-hint cta-hint-top-right" aria-hidden="true">
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M44 10 C 30 10, 16 16, 8 34" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M6 22 L 8 35 L 20 32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="cta-hint-text">click this</span>
+            </div>
+
+            <a id="google-form-link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSedtJd1sB7jvB6HA25iG7m_sgcpgEPefhrl6ujeN9YaYTI8vA/viewform?usp=dialog"
+              class="cta-button">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+              </svg>
+              <span>RSVP</span>
+            </a>
+
+            <!-- Bottom-Left Hint: "stop procrastinating" -->
+            <div class="cta-hint cta-hint-bottom-left" aria-hidden="true">
+              <span class="cta-hint-text">stop procrastinating</span>
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M6 34 C 18 32, 32 24, 40 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M28 10 L 40 7 L 38 20" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <!-- Bottom-Right Hint: "do ittt" -->
+            <div class="cta-hint cta-hint-bottom-right" aria-hidden="true">
+              <svg class="cta-arrow-svg" width="48" height="42" viewBox="0 0 48 42" fill="none">
+                <path d="M42 34 C 30 32, 16 24, 8 8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M10 20 L 8 7 L 20 10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="cta-hint-text">do ittt</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <!-- Inspiration Section -->
+    <section class="section-card inspiration-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>✨ Inspiration</span>
+          </h2>
+        </div>
       </div>
-      <div class="tag">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Responsive Design
+
+      <div class="inspiration-grid">
+        <div class="inspiration-card">
+          <div class="inspiration-img-wrap">
+            <img class="inspiration-img" src="resources/Recreated1.png" alt="Inspiration idea 1 - Childhood recreation"
+              loading="lazy" />
+          </div>
+        </div>
+
+        <div class="inspiration-card">
+          <div class="inspiration-img-wrap">
+            <img class="inspiration-img" src="resources/Recreated2.png" alt="Inspiration idea 2 - Childhood recreation"
+              loading="lazy" />
+          </div>
+        </div>
+
+        <div class="inspiration-card">
+          <div class="inspiration-img-wrap">
+            <img class="inspiration-img" src="resources/Recreated3.png" alt="Inspiration idea 3 - Childhood recreation"
+              loading="lazy" />
+          </div>
+        </div>
+
+        <div class="inspiration-card">
+          <div class="inspiration-img-wrap">
+            <img class="inspiration-img" src="resources/Recreated4.png" alt="Inspiration idea 4 - Childhood recreation"
+              loading="lazy" />
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="footer-note">
-      Host directly from the repository root on GitHub Pages
-    </div>
-  </main>
+    <!-- RAM Fund Progress Bar Section -->
+    <section class="section-card">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">
+            <span>🐑 Stav's RAM Fund</span>
+          </h2>
+          <p class="section-subtitle">
+            If you're feeling generous, instead of a gift, I would love a contribution to my ram fund <br>
+            (payid: stavros.dimos.0@gmail.com).
+          </p>
+          <p class="section-subtitle">
+            Am i buying computer parts? Am i buying a sheep? Contribute to find out.
+          </p>
+        </div>
+        <div class="percentage-badge" id="percentage-badge" title="Click for confetti celebration!">
+          <span id="percentage-number">0%</span>
+        </div>
+      </div>
 
-  <script>
-    // Subtle interactive tilt effect on desktop
-    const card = document.getElementById('main-card');
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      window.addEventListener('mousemove', (e) => {
-        const { innerWidth, innerHeight } = window;
-        const xOffset = (e.clientX - innerWidth / 2) / (innerWidth / 2);
-        const yOffset = (e.clientY - innerHeight / 2) / (innerHeight / 2);
-        
-        card.style.transform = `translateY(-4px) perspective(1000px) rotateX(${-yOffset * 3.5}deg) rotateY(${xOffset * 3.5}deg)`;
-      });
+      <!-- RAM Animal Progress Container -->
+      <div class="ram-container-wrapper">
+        <div class="ram-outer-frame" id="ram-frame" title="Click for celebratory sparkles!">
 
-      window.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) perspective(1000px) rotateX(0deg) rotateY(0deg)';
-      });
-    }
-  </script>
+          <!-- Base Layer: Soft coloring-book pencil sketch outline -->
+          <div class="ram-base-sketch">
+            <img class="ram-base-img" src="resources/ram.png" alt="&lt;RAM MASCOT IMAGE ALT TEXT&gt;" />
+          </div>
+
+          <!-- Fill Layer: Unmasks the vibrant full-color fluffy ram up to current % -->
+          <div class="ram-fill-layer" id="ram-fill-layer">
+            <div class="ram-visual-content" id="ram-visual-content">
+              <img id="ram-custom-image" class="ram-fill-img" src="resources/ram.png"
+                alt="&lt;RAM MASCOT IMAGE ALT TEXT&gt;" />
+              <!-- Shimmer edge indicating current progress -->
+              <div class="ram-sparkle-edge"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </div>
 </body>
+
 </html>

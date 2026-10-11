@@ -281,7 +281,6 @@ h1.hero-title {
   padding: 32px 34px;
   box-shadow: var(--shadow-card);
   position: relative;
-  overflow: hidden;
 }
 
 .event-details-card::before {
@@ -291,6 +290,7 @@ h1.hero-title {
   left: 0;
   right: 0;
   height: 4px;
+  border-radius: 26px 26px 0 0;
   background: linear-gradient(90deg, #F472B6, #F59E0B, #10B981, #60A5FA);
 }
 
@@ -382,6 +382,10 @@ h1.hero-title {
 .cta-hint-text {
   display: inline-block;
   letter-spacing: 0.02em;
+}
+
+.mobile-break {
+  display: none;
 }
 
 .cta-arrow-svg {
@@ -846,31 +850,40 @@ footer strong {
     font-size: 0.98rem;
     gap: 8px;
   }
+  .mobile-break {
+    display: block;
+  }
   .cta-wrapper {
-    margin: 40px auto 30px;
+    margin: 44px auto 34px;
   }
   .cta-hint {
     font-size: 1.15rem;
-    gap: 4px;
+    gap: 6px;
+    white-space: normal;
+  }
+  .cta-hint-top-left .cta-hint-text,
+  .cta-hint-bottom-left .cta-hint-text {
+    text-align: right;
+    line-height: 1.05;
   }
   .cta-arrow-svg {
     width: 32px;
     height: 28px;
   }
   .cta-hint-top-left {
-    right: calc(100% + 2px);
+    right: calc(100% + 4px);
     bottom: calc(100% + 2px);
   }
   .cta-hint-top-right {
-    left: calc(100% + 2px);
+    left: calc(100% + 4px);
     bottom: calc(100% + 2px);
   }
   .cta-hint-bottom-left {
-    right: calc(100% + 2px);
+    right: calc(100% + 4px);
     top: calc(100% + 2px);
   }
   .cta-hint-bottom-right {
-    left: calc(100% + 2px);
+    left: calc(100% + 4px);
     top: calc(100% + 2px);
   }
   .cta-button {

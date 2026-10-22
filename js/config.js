@@ -9,7 +9,7 @@
 const BIRTHDAY_CONFIG = {
   // 1. RAM Fund Percentage (Set manually, currently 25%)
   // Values: 0 to 100
-  ramFundPercentage: 5,
+  ramFundPercentage: 12,
 
   // 2. Google Form URL for Photo & Name Submissions
   // Paste your published Google Form link here:
